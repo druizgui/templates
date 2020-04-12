@@ -6,14 +6,14 @@
 @echo off
 
 SET CURRENTDIR=.
-SET MESSAGE="Global commit"
+SET BRANCH=dev
 
+if NOT "%1"=="" SET BRANCH=%1
 if NOT "%2"=="" SET CURRENTDIR=%2
-if NOT "%1"=="" SET MESSAGE=%1
 
 for /f %%i in ('dir /ad /b /s %CURRENTDIR%') do (	
 	IF EXIST %%i\.git (
 		echo pull %%i
-		git --git-dir=%%i\.git commit --all -m "%MESSAGE%"
+		git --git-dir=%%i\.git checkout %BRANCH%
 	)
 )
