@@ -19,7 +19,7 @@ git push
 git checkout -b dev
 git push --set-upstream origin dev
 
-dotnet new sln         %PROJECTNAME%
+dotnet new sln      -n %PROJECTNAME%
 
 dotnet new classlib -n %PROJECTNAME%.App -f netcoreapp3.1
 
@@ -31,8 +31,10 @@ dotnet sln add         %PROJECTNAME%.Dom
 dotnet new mstest   -n %PROJECTNAME%.Tests
 dotnet sln add         %PROJECTNAME%.Tests
 
-dotnet new console  -n %PROJECTNAME%.Con
-dotnet sln add         %PROJECTNAME%.Con
+dotnet new console  -n %PROJECTNAME%
+dotnet new mstest   -n %PROJECTNAME%.Tests
+dotnet sln add         %PROJECTNAME%
+dotnet sln add         %PROJECTNAME%.Tests
 
 
 :: dotnet add package Microsoft.EntityFrameworkCore.Tools 
